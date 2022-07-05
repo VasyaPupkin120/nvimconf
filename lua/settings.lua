@@ -26,7 +26,8 @@ opt.cursorline = true               -- Подсветка строки с кур
 opt.spelllang= { 'en_us', 'ru' }    -- Словари рус eng
 opt.number = true                   -- Включаем нумерацию строк
 opt.relativenumber = true           -- Вкл. относительную нумерацию строк
--- opt.so = 10                        -- Курсор всегда в центре экрана
+-- opt.so = 900                          -- Курсор всегда в центре экрана
+opt.so = 2                          -- три строки до верха и низа экрана
 opt.undofile = true                 -- Возможность отката назад
 opt.swapfile = false                -- задолбал гребаный своп-файл каждый раз
 opt.splitright = true               -- vertical split вправо
@@ -176,4 +177,3 @@ cmd [[lua require('lualine').setup() ]]
 cmd [[lua require('Comment').setup() ]]
 -- запуск красивых вкладок для всех буферов вверху, теперь по Tab - переключение между вкладками
 cmd [[lua require("bufferline").setup() ]]
-

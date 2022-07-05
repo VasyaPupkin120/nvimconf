@@ -2,15 +2,19 @@ local map = vim.api.nvim_set_keymap
 local default_opts = {noremap = true, silent = true}
 
 -- Системный буфер обмена shift - Y
+-- Похоже скомпилрован без поддержки буфера +
 map('v', 'S-Y', '"+y', {})
--- Типа 'Нажимает' на ESC при быстром нажатии jj, чтобы не тянутся
+-- Типа 'Нажимает' на ESC при быстром нажатии JJ, чтобы не тянутся
+-- Переносит действие кнопки J на сочетание JL - чтобы строки не слипались
 map('i', 'JJ', '<Esc>', {noremap = true})
 map('i', 'ОО', '<Esc>', {noremap = true})
--- Заменяет j на gj и обратно
-map('n', 'j', 'gj', {noremap = true})
-map('n', 'k', 'gk', {noremap = true})
-map('n', 'gj', 'j', {noremap = true})
-map('n', 'gk', 'k', {noremap = true})
+map('n', 'J', '<Esc>', {noremap = true})
+map('n', 'JL', 'J', {noremap = true})
+-- Заменяет j на gj и обратно + центровка
+map('n', 'j', 'gj', default_opts)
+map('n', 'k', 'gk', default_opts)
+map('n', 'gj', 'jzz', default_opts)
+map('n', 'gk', 'kzz', default_opts)
 -- Стрелочки откл. Использовать hjkl
 map('', '<up>', ':echoe "Use k"<CR>', {noremap = true, silent = false})
 map('', '<down>', ':echoe "Use j"<CR>', {noremap = true, silent = false})
@@ -20,21 +24,27 @@ map('', '<right>', ':echoe "Use l"<CR>', {noremap = true, silent = false})
 map('n', '<C-s>', ':Autoformat<CR>:w<CR>',  default_opts)
 map('i', '<C-s>', '<esc>:Autoformat<CR>:w<CR>', default_opts)
 -- Переключение вкладок с помощью TAB или shift-tab (akinsho/bufferline.nvim)
+-- Закрытие вкладки по gw
 -- map('n', '<Tab>', ':BufferLineCycleNext<CR>', default_opts)
 -- map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', default_opts)
 map('n', '<Tab>', ':bn<CR>', default_opts)
 map('n', '<S-Tab>', ':bp<CR>', default_opts)
 map('n', 'gw', ':bd<CR>', default_opts)
--- Пролистнуть на страницу вниз / вверх (как в браузерах)
-map('n', '<Space>', '<PageDown> zz', default_opts)
-map('n', '<C-Space>', '<PageUp> zz', default_opts)
+-- Пролистнуть на страницу вниз / вверх, листать на 5 строк + центровка
+-- map('n', '<Space>', '<PageDown> zz', default_opts)
+-- map('n', '<C-Space>', '<PageUp> zz', default_opts)
+map('n', '<S-h>', '<PageUp>zz', default_opts)
+map('n', '<S-l>', '<PageDown>zz', default_opts)
+map('n', '<C-l>', '5jzz', default_opts)
+map('n', '<C-h>', '5kzz', default_opts)
+
 -- " Переводчик рус -> eng
 map('v', 't', '<Plug>(VTranslate)', {})
 -- fzf
 map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<cr>]], default_opts)
 map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<cr>]], default_opts)
--- По ,<Space> очищаем последний поиск с подсветкой
-map('n', ',<Space>', ':nohl<CR>', default_opts)
+-- По <<Space> очищаем последний поиск с подсветкой
+map('n', '<<Space>', ':nohl<CR>', default_opts)
 -- Набор сочетаний клавиш для go_to_definiton, скопированы из файла Голобурдина
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts)
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
@@ -43,7 +53,7 @@ map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', default_opts)
 map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', default_opts)
 map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', default_opts)
 map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', default_opts)
-map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders)))<CR>', default_opts)
+map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders))<CR>', default_opts)
 map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', default_opts)
 map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', default_opts)
 map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', default_opts)
