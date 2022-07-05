@@ -44,7 +44,8 @@ map('v', 't', '<Plug>(VTranslate)', {})
 map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<cr>]], default_opts)
 map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<cr>]], default_opts)
 -- По <<Space> очищаем последний поиск с подсветкой
-map('n', '<<Space>', ':nohl<CR>', default_opts) -- Набор сочетаний клавиш для go_to_definiton, скопированы из файла Голобурдина
+map('n', '<<Space>', ':nohl<CR>', default_opts)
+-- Набор сочетаний клавиш для go_to_definiton, скопированы из файла Голобурдина
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts)
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', default_opts)
@@ -69,7 +70,8 @@ map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', default_opts)
 --F1 не используется
 -- shift + F1 = удалить пустые строки
 map('n', '<S-F1>', ':g/^$/d<CR>', default_opts)
--- <F2> для временной вставки из буфера, чтобы отключить авто идент vim.o.pastetoggle='<F2>'
+-- <F2> для временной вставки из буфера, чтобы отключить авто идент
+vim.o.pastetoggle='<F2>'
 -- <F3> перечитать конфигурацию nvim Может не работать, если echo $TERM  xterm-256color
 map('n', '<F3>', ':so ~/.config/nvim/init.lua<CR>:so ~/.config/nvim/lua/plugins.lua<CR>:so ~/.config/nvim/lua/settings.lua<CR>:so ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
 -- <S-F3> Открыть всю nvim конфигурацию для редактирования
