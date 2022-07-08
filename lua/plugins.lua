@@ -89,7 +89,7 @@ return require('packer').startup(function()
 ---  -- ]p - вставить на строку выше, [p - ниже
 ---  use 'tpope/vim-unimpaired'
 ---  -- Переводчик рус - англ
----  use 'skanehira/translate.vim'
+      use 'skanehira/translate.vim'
 ---  --- popup окошки
 ---  use 'nvim-lua/popup.nvim'
 ---  -- Обрамляет или снимает обрамление. Выдели слово, нажми S и набери <h1>
@@ -99,7 +99,7 @@ return require('packer').startup(function()
 ---  -- Может повторять через . vimsurround
 ---  use 'tpope/vim-repeat'
 ---  -- Стартовая страница, если просто набрать vim в консоле
----  use 'mhinz/vim-startify'
+     use 'mhinz/vim-startify'
      -- Комментирует по gc все, вне зависимости от языка программирования
      use { 'numToStr/Comment.nvim',
      config = function() require('Comment').setup{} end }
