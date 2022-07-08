@@ -30,14 +30,11 @@ map('i', '<C-s>', '<esc>:Autoformat<CR>:w<CR>', default_opts)
 map('n', '<Tab>', ':bn<CR>', default_opts)
 map('n', '<S-Tab>', ':bp<CR>', default_opts)
 map('n', 'gw', ':bd<CR>', default_opts)
--- Пролистнуть на страницу вниз / вверх, листать до краяя экрана + шаг на строку
+-- Пролистнуть на страницу вниз / вверх
 -- map('n', '<Space>', '<PageDown> zz', default_opts)
 -- map('n', '<C-Space>', '<PageUp> zz', default_opts)
 map('n', '<C-h>', '<PageUp>Hk', default_opts)
 map('n', '<C-l>', '<PageDown>Lj', default_opts)
--- map('n', '<C-h>', 'HzzL', default_opts)
--- map('n', '<C-l>', 'LzzH', default_opts)
-
 -- " Переводчик рус -> eng
 map('v', 't', '<Plug>(VTranslate)', {})
 -- fzf
