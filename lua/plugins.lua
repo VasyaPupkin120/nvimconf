@@ -32,7 +32,7 @@ return require('packer').startup(function()
 ---  requires = 'kyazdani42/nvim-web-devicons',
 ---  config = function() require'nvim-tree'.setup{} end, }
 ---  -- Навигация внутри файла по классам и функциям
----  use 'majutsushi/tagbar'
+     use 'majutsushi/tagbar'
 ---  -- Замена fzf и ack
      use { 'nvim-telescope/telescope.nvim',
      requires = { {'nvim-lua/plenary.nvim'} },
