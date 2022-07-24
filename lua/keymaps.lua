@@ -43,11 +43,15 @@ map('n', 'gw', ':bd<CR>', default_opts)
 -- map('n', '<C-Space>', '<PageUp> zz', default_opts)
 map('n', '<S-h>', '<PageUp>Hk', default_opts)
 map('n', '<S-l>', '<PageDown>Lj', default_opts)
+-- Переход в самый низ файла с центровкой
+map('n', '<S-g>', 'Gzz', default_opts)
 -- " Переводчик рус -> eng
 map('v', 't', '<Plug>(VTranslate)', {})
--- fzf
-map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<cr>]], default_opts)
-map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<cr>]], default_opts)
+-- fzf - список буферов и список файлов проекта,
+-- после открытия popup-окна в нем теперь командный режим
+-- за счет списка команд - комнды плагина и команды <Esc>
+map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<CR>, <Esc>]], default_opts)
+map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<CR>, <Esc]], default_opts)
 -- По <<Space> очищаем последний поиск с подсветкой
 map('n', '<<Space>', ':nohl<CR>', default_opts)
 -- Набор сочетаний клавиш для go_to_definiton, скопированы из файла Голобурдина
@@ -56,6 +60,7 @@ map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', default_opts)
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', default_opts)
 -- map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', default_opts)
+map('n', '<C-u>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', default_opts)
 map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', default_opts)
 map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', default_opts)
 map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders))<CR>', default_opts)
@@ -81,7 +86,7 @@ vim.o.pastetoggle='<F2>'
 map('n', '<F3>', ':so ~/.config/nvim/init.lua<CR>:so ~/.config/nvim/lua/plugins.lua<CR>:so ~/.config/nvim/lua/settings.lua<CR>:so ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
 -- <S-F3> Открыть всю nvim конфигурацию для редактирования
 map('n', '<S-F3>', ':e ~/.config/nvim/init.lua<CR>:e ~/.config/nvim/lua/plugins.lua<CR>:e ~/.config/nvim/lua/settings.lua<CR>:e ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
--- <F4> Поиск слова под курсором
+-- <F4> Поиск строки под курсором
 map('n', '<F4>', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], default_opts)
 -- <S-F4> Поиск слова в модальном окошке
 map('n', '<S-F4>', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)

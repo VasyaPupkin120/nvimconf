@@ -28,9 +28,9 @@ return require('packer').startup(function()
 ---  -- НАВИГАЦИЯ
 ---  -----------------------------------------------------------
 ---  -- Файловый менеджер
----  use { 'kyazdani42/nvim-tree.lua',
----  requires = 'kyazdani42/nvim-web-devicons',
----  config = function() require'nvim-tree'.setup{} end, }
+     use { 'kyazdani42/nvim-tree.lua',
+     requires = 'kyazdani42/nvim-web-devicons',
+     config = function() require'nvim-tree'.setup{} end, }
 ---  -- Навигация внутри файла по классам и функциям
      use 'majutsushi/tagbar'
 ---  -- Замена fzf и ack
@@ -89,7 +89,7 @@ return require('packer').startup(function()
 ---  -- ]p - вставить на строку выше, [p - ниже
 ---  use 'tpope/vim-unimpaired'
 ---  -- Переводчик рус - англ
-      use 'skanehira/translate.vim'
+     use 'skanehira/translate.vim'
 ---  --- popup окошки
 ---  use 'nvim-lua/popup.nvim'
 ---  -- Обрамляет или снимает обрамление. Выдели слово, нажми S и набери <h1>
@@ -105,7 +105,7 @@ return require('packer').startup(function()
      config = function() require('Comment').setup{} end }
 ---  -- Обрамляет строку в теги по ctrl- y + ,
 ---  use 'mattn/emmet-vim'
-     -- Закрывает автоматом скобки
+---  -- Закрывает автоматом скобки
      use 'cohama/lexima.vim'
 ---  -- Линтер, работает для всех языков
      use 'dense-analysis/ale'
