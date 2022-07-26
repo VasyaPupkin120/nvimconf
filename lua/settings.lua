@@ -172,9 +172,11 @@ cmp.setup {
 
 
 -- Запуск красивой строки состояния при начале работы
-cmd [[lua require('lualine').setup() ]]
+cmd [[lua require('lualine').setup()]]
 -- запуск плагина для массового комментирования
-cmd [[lua require('Comment').setup() ]]
+cmd [[lua require('Comment').setup()]]
 -- запуск красивых вкладок для всех буферов вверху,
 -- теперь по Tab - переключение между вкладками
-cmd [[lua require("bufferline").setup() ]]
+cmd [[lua require("bufferline").setup()]]
+-- чтобы работал проводник файлов по F6
+cmd [[lua require("nvim-tree").setup()]]
