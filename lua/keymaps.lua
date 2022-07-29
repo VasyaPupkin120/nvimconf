@@ -43,15 +43,12 @@ map('n', 'gw', ':bd<CR>', default_opts)
 -- map('n', '<C-Space>', '<PageUp> zz', default_opts)
 map('n', '<S-h>', '<PageUp>Hk', default_opts)
 map('n', '<S-l>', '<PageDown>Lj', default_opts)
+map('v', '<S-h>', '<PageUp>Hk', default_opts)
+map('v', '<S-l>', '<PageDown>Lj', default_opts)
 -- Переход в самый низ файла с центровкой
 map('n', '<S-g>', 'Gzz', default_opts)
 -- " Переводчик рус -> eng
 map('v', 't', '<Plug>(VTranslate)', {})
--- fzf - список буферов и список файлов проекта,
--- после открытия popup-окна в нем теперь командный режим
--- за счет списка команд - комнды плагина и команды <Esc>
-map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<CR>, <Esc>]], default_opts)
-map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<CR>, <Esc]], default_opts)
 -- По <<Space> очищаем последний поиск с подсветкой
 map('n', '<<Space>', ':nohl<CR>', default_opts)
 -- Набор сочетаний клавиш для go_to_definiton, скопированы из файла Голобурдина
@@ -75,27 +72,35 @@ map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', default_op
 map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', default_opts)
 -- this is good!
 -----------------------------------------------------------
+-- Поиск слов через telescope, дерево файлов, список буферов
+-----------------------------------------------------------
+-- <# Поиск слова под курсором по всему проекту (отсчитывая вниз от рабочей директории)
+map('n', '<#', [[<cmd>lua require('telescope.builtin').grep_string()<cr><Esc>:set relativenumber<CR>]], default_opts)
+-- </ Поиск слова в модальном окошке
+map('n', '</', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
+-- <f дерево файлов, непоянтно почему нужно дополнительно указывать русскую а
+map('n', '<f', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set relativenumber<CR>', default_opts)
+map('n', '<а', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set relativenumber<CR>', default_opts)
+-- fzf - список буферов и список файлов проекта,
+-- после открытия popup-окна в нем теперь командный режим
+-- за счет списка команд - комнды плагина и команды <Esc>
+map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<CR>, <Esc>]], default_opts)
+map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<CR>, <Esc]], default_opts)
+-----------------------------------------------------------
 -- Фн. клавиши по F1 .. F12
 -----------------------------------------------------------
---F1 не используется
--- shift + F1 = удалить пустые строки
-map('n', '<S-F1>', ':g/^$/d<CR>', default_opts)
+-- <<F1> удалить пустые строки
+map('n', '<<F1>', ':g/^$/d<CR>', default_opts)
 -- <F2> для временной вставки из буфера, чтобы отключить авто идент
 vim.o.pastetoggle='<F2>'
 -- <F3> перечитать конфигурацию nvim Может не работать, если echo $TERM  xterm-256color
 map('n', '<F3>', ':so ~/.config/nvim/init.lua<CR>:so ~/.config/nvim/lua/plugins.lua<CR>:so ~/.config/nvim/lua/settings.lua<CR>:so ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
--- <S-F3> Открыть всю nvim конфигурацию для редактирования
-map('n', '<S-F3>', ':e ~/.config/nvim/init.lua<CR>:e ~/.config/nvim/lua/plugins.lua<CR>:e ~/.config/nvim/lua/settings.lua<CR>:e ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
--- <F4> Поиск строки под курсором
-map('n', '<F4>', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]], default_opts)
--- <S-F4> Поиск слова в модальном окошке
-map('n', '<S-F4>', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
+-- <<F3> Открыть всю nvim конфигурацию для редактирования
+map('n', '<<F3>', ':e ~/.config/nvim/init.lua<CR>:e ~/.config/nvim/lua/plugins.lua<CR>:e ~/.config/nvim/lua/settings.lua<CR>:e ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
 -- <F5> разные вариации нумераций строк, можно переключаться
 map('n', '<F5>', ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
--- <F6> дерево файлов.
-map('n', '<F6>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>', default_opts)
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
 map('n', '<F8>', ':TagbarToggle<CR>', default_opts)
--- <F11> Проверка орфографии  для русского и английского языка
--- map('n', '<F11>', ':set spell!<CR>', default_opts)
--- map('i', '<F11>', '<C-O>:set spell!<CR>', default_opts)
+-- <F12> Проверка орфографии  для русского и английского языка
+map('n', '<F12>', ':set spell!<CR>', default_opts)
+map('i', '<F12>', '<C-O>:set spell!<CR>', default_opts)
