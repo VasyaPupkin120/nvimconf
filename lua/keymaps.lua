@@ -2,7 +2,7 @@ local map = vim.api.nvim_set_keymap
 local default_opts = {noremap = true, silent = true}
 
 -- Системный буфер обмена shift - Y
--- Похоже скомпилрован без поддержки буфера +
+-- Похоже моя версия nvim скомпилрована без поддержки буфера +
 map('v', 'S-Y', '"+y', {})
 -- Типа 'Нажимает' на ESC при быстром нажатии JJ, чтобы не тянутся
 -- Переносит действие кнопки J на сочетание JL - чтобы строки не слипались
@@ -23,7 +23,7 @@ map('', '<up>', ':echoe "Use k"<CR>', {noremap = true, silent = false})
 map('', '<down>', ':echoe "Use j"<CR>', {noremap = true, silent = false})
 map('', '<left>', ':echoe "Use h"<CR>', {noremap = true, silent = false})
 map('', '<right>', ':echoe "Use l"<CR>', {noremap = true, silent = false})
--- Навигация по окнам, для удобства работы с деревом имен
+-- Навигация по окнам, для удобства работы с деревом имен и вообще с окнами
 map('n', '<C-h>', '<C-w>h',  default_opts)
 map('n', '<C-l>', '<C-w>l',  default_opts)
 map('n', '<C-j>', '<C-w>j',  default_opts)
@@ -76,12 +76,14 @@ map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', default_opts)
 -----------------------------------------------------------
 -- <# Поиск слова под курсором по всему проекту (отсчитывая вниз от рабочей директории)
 map('n', '<#', [[<cmd>lua require('telescope.builtin').grep_string()<cr><Esc>:set relativenumber<CR>]], default_opts)
--- </ Поиск слова в модальном окошке
-map('n', '</', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
+map('n', '<№', [[<cmd>lua require('telescope.builtin').grep_string()<cr><Esc>:set relativenumber<CR>]], default_opts)
+-- </ Поиск слова по всему проекту в модальном окошке
+map('n', '<s', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
+map('n', '<ы', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
 -- <f дерево файлов, непоянтно почему нужно дополнительно указывать русскую а
 map('n', '<f', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set relativenumber<CR>', default_opts)
 map('n', '<а', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set relativenumber<CR>', default_opts)
--- fzf - список буферов и список файлов проекта,
+-- список буферов и список файлов проекта,
 -- после открытия popup-окна в нем теперь командный режим
 -- за счет списка команд - комнды плагина и команды <Esc>
 map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<CR>, <Esc>]], default_opts)
@@ -96,7 +98,7 @@ vim.o.pastetoggle='<F2>'
 -- <F3> перечитать конфигурацию nvim Может не работать, если echo $TERM  xterm-256color
 map('n', '<F3>', ':so ~/.config/nvim/init.lua<CR>:so ~/.config/nvim/lua/plugins.lua<CR>:so ~/.config/nvim/lua/settings.lua<CR>:so ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
 -- <<F3> Открыть всю nvim конфигурацию для редактирования
-map('n', '<<F3>', ':e ~/.config/nvim/init.lua<CR>:e ~/.config/nvim/lua/plugins.lua<CR>:e ~/.config/nvim/lua/settings.lua<CR>:e ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
+map('n', '<<F3>', ':e ~/.config/nvim/init.lua<CR>:e ~/.config/nvim/lua/plugins.lua<CR>:e ~/.config/nvim/lua/settings.lua<CR>:e ~/.config/nvim/lua/keymaps.lua<CR>:e ~/.config/nvim/trash/conspect.txt<CR>', { noremap = true })
 -- <F5> разные вариации нумераций строк, можно переключаться
 map('n', '<F5>', ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
 -- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
