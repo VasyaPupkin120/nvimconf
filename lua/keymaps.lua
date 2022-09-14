@@ -18,6 +18,8 @@ map('n', 'j', 'gj', default_opts)
 map('n', 'k', 'gk', default_opts)
 map('n', 'gj', 'jzz', default_opts)
 map('n', 'gk', 'kzz', default_opts)
+map('v', 'gj', 'jzz', default_opts)
+map('v', 'gk', 'kzz', default_opts)
 -- Стрелочки откл. Использовать hjkl
 map('', '<up>', ':echoe "Use k"<CR>', {noremap = true, silent = false})
 map('', '<down>', ':echoe "Use j"<CR>', {noremap = true, silent = false})
@@ -38,13 +40,16 @@ map('i', '<C-s>', '<Esc>:Autoformat<CR>:w<CR>', default_opts)
 map('n', '<Tab>', ':bn<CR>', default_opts)
 map('n', '<S-Tab>', ':bp<CR>', default_opts)
 map('n', 'gw', ':bd<CR>', default_opts)
--- Пролистнуть на страницу вниз / вверх
--- map('n', '<Space>', '<PageDown> zz', default_opts)
--- map('n', '<C-Space>', '<PageUp> zz', default_opts)
-map('n', '<S-h>', '<PageUp>Hk', default_opts)
-map('n', '<S-l>', '<PageDown>Lj', default_opts)
-map('v', '<S-h>', '<PageUp>Hk', default_opts)
-map('v', '<S-l>', '<PageDown>Lj', default_opts)
+-- Пролистнуть на одну экранную страницу вниз / вверх
+-- + центровка посередине следующей страницы
+-- map('n', '<Space>', '<PageDown>zz', default_opts)
+-- map('n', '<C-Space>', '<PageUp>zz', default_opts)
+-- map('v', '<S-h>', '<PageUp>Hkzz', default_opts)
+-- map('v', '<S-l>', '<PageDown>Ljzz', default_opts)
+map('n', '<S-h>', '<PageUp>zz', default_opts)
+map('n', '<S-l>', '<PageDown>zz', default_opts)
+map('v', '<S-h>', '<PageUp>zz', default_opts)
+map('v', '<S-l>', '<PageDown>zz', default_opts)
 -- Переход в самый низ файла с центровкой
 map('n', '<S-g>', 'Gzz', default_opts)
 -- " Переводчик рус -> eng
@@ -80,7 +85,7 @@ map('n', '<№', [[<cmd>lua require('telescope.builtin').grep_string()<cr><Esc>:
 -- </ Поиск слова по всему проекту в модальном окошке
 map('n', '<s', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
 map('n', '<ы', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
--- <f дерево файлов, непоянтно почему нужно дополнительно указывать русскую а
+-- <f - files дерево файлов, непоянтно почему нужно дополнительно указывать русскую а
 map('n', '<f', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set relativenumber<CR>', default_opts)
 map('n', '<а', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set relativenumber<CR>', default_opts)
 -- список буферов и список файлов проекта,
@@ -88,11 +93,14 @@ map('n', '<а', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set rela
 -- за счет списка команд - комнды плагина и команды <Esc>
 map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<CR>, <Esc>]], default_opts)
 map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<CR>, <Esc]], default_opts)
+-- <n - names Показ дерева классов и функций, плагин majutsushi/tagbar
+map('n', '<n', ':TagbarToggle<CR>', default_opts)
+map('n', '<т', ':TagbarToggle<CR>', default_opts)
 -----------------------------------------------------------
 -- Фн. клавиши по F1 .. F12
 -----------------------------------------------------------
 -- <<F1> удалить пустые строки
-map('n', '<<F1>', ':g/^$/d<CR>', default_opts)
+-- map('n', '<<F1>', ':g/^$/d<CR>', default_opts)
 -- <F2> для временной вставки из буфера, чтобы отключить авто идент
 vim.o.pastetoggle='<F2>'
 -- <F3> перечитать конфигурацию nvim Может не работать, если echo $TERM  xterm-256color
@@ -101,8 +109,6 @@ map('n', '<F3>', ':so ~/.config/nvim/init.lua<CR>:so ~/.config/nvim/lua/plugins.
 map('n', '<<F3>', ':e ~/.config/nvim/init.lua<CR>:e ~/.config/nvim/lua/plugins.lua<CR>:e ~/.config/nvim/lua/settings.lua<CR>:e ~/.config/nvim/lua/keymaps.lua<CR>:e ~/.config/nvim/trash/conspect.txt<CR>', { noremap = true })
 -- <F5> разные вариации нумераций строк, можно переключаться
 map('n', '<F5>', ':exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
--- <F8>  Показ дерева классов и функций, плагин majutsushi/tagbar
-map('n', '<F8>', ':TagbarToggle<CR>', default_opts)
 -- <F12> Проверка орфографии  для русского и английского языка
 map('n', '<F12>', ':set spell!<CR>', default_opts)
 map('i', '<F12>', '<C-O>:set spell!<CR>', default_opts)

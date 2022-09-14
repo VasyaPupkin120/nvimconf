@@ -116,7 +116,7 @@ local cmp = require 'cmp'
 cmp.setup {
     -- включил автокомплит по умолчанию
   completion = {
-        autocomplete = true
+        autocomplete = false
   },
     -- конец настроек автокомплита по умолчанию
   snippet = {
