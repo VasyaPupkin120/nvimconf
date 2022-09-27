@@ -41,15 +41,29 @@ map('n', '<Tab>', ':bn<CR>', default_opts)
 map('n', '<S-Tab>', ':bp<CR>', default_opts)
 map('n', 'gw', ':bd<CR>', default_opts)
 -- Пролистнуть на одну экранную страницу вниз / вверх
--- + центровка посередине следующей страницы
+-- и переместить активную строку в центр этой страницы
+-- + центровка - чтобы красиво выводить последнюю строку файла
+
 -- map('n', '<Space>', '<PageDown>zz', default_opts)
 -- map('n', '<C-Space>', '<PageUp>zz', default_opts)
 -- map('v', '<S-h>', '<PageUp>Hkzz', default_opts)
 -- map('v', '<S-l>', '<PageDown>Ljzz', default_opts)
-map('n', '<S-h>', '<PageUp>zz', default_opts)
-map('n', '<S-l>', '<PageDown>zz', default_opts)
-map('v', '<S-h>', '<PageUp>zz', default_opts)
-map('v', '<S-l>', '<PageDown>zz', default_opts)
+
+-- map('n', '<S-h>', '<PageUp>zz', default_opts)
+-- map('n', '<S-l>', '<PageDown>zz', default_opts)
+-- map('v', '<S-h>', '<PageUp>zz', default_opts)
+-- map('v', '<S-l>', '<PageDown>zz', default_opts)
+
+-- map('n', '<S-h>', '10kzz', default_opts)
+-- map('n', '<S-l>', '10jzz', default_opts)
+-- map('v', '<S-h>', '10kzz', default_opts)
+-- map('v', '<S-l>', '10jzz', default_opts)
+
+map('n', '<S-h>', '<PageUp>Mzz', default_opts)
+map('n', '<S-l>', '<PageDown>Mzz', default_opts)
+map('v', '<S-h>', '<PageUp>Mzz', default_opts)
+map('v', '<S-l>', '<PageDown>Mzz', default_opts)
+
 -- Переход в самый низ файла с центровкой
 map('n', '<S-g>', 'Gzz', default_opts)
 -- " Переводчик рус -> eng

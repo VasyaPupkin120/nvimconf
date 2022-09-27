@@ -1,7 +1,24 @@
+-- Установка менеджера плагинов, а если менеджер не загружен, то и загрузка
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
+local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  execute 'packadd packer.nvim'
+end
+
+
+
+
+-- Собственно, плагины
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
-    -- Packer сам себя
+    -- Packer сам себя, не всегда отрабатывает, возможно нужно сначала клонировать.
+    -- Добавил в начало этого файла код, который проверяет наличие менеджера 
+    -- и автоматически его устанавливает.
     use 'wbthomason/packer.nvim'
 
     -----------------------------------------------------------
