@@ -230,5 +230,5 @@ require('lspconfig')['dm_langserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
--- отключение замены табов на пробелы для dm-файлов
-cmd [[autocmd FileType dm setlocal noexpandtab]]
+-- отключение замены табов на пробелы для dm-файлов и txt-файлов
+cmd [[autocmd FileType dm,text setlocal noexpandtab]]
