@@ -13,6 +13,8 @@ map('n', 'JL', 'J', {noremap = true})
 -- центровка при вводе новой строки
 map('n', 'o', 'zzo', default_opts)
 map('n', 'O', 'zzO', default_opts)
+map('n', 'A', 'zzA', default_opts)
+map('n', 'I', 'zzI', default_opts)
 -- Заменяет j на gj и обратно + центровка
 map('n', 'j', 'gj', default_opts)
 map('n', 'k', 'gk', default_opts)
@@ -40,29 +42,15 @@ map('i', '<C-s>', '<Esc>:Autoformat<CR>:w<CR>', default_opts)
 map('n', '<Tab>', ':bn<CR>', default_opts)
 map('n', '<S-Tab>', ':bp<CR>', default_opts)
 map('n', 'gw', ':bd<CR>', default_opts)
--- Пролистнуть на одну экранную страницу вниз / вверх
--- и переместить активную строку в центр этой страницы
--- + центровка - чтобы красиво выводить последнюю строку файла
-
+-- Навигация крупными блоками
 -- map('n', '<Space>', '<PageDown>zz', default_opts)
 -- map('n', '<C-Space>', '<PageUp>zz', default_opts)
 -- map('v', '<S-h>', '<PageUp>Hkzz', default_opts)
 -- map('v', '<S-l>', '<PageDown>Ljzz', default_opts)
-
--- map('n', '<S-h>', '<PageUp>zz', default_opts)
--- map('n', '<S-l>', '<PageDown>zz', default_opts)
--- map('v', '<S-h>', '<PageUp>zz', default_opts)
--- map('v', '<S-l>', '<PageDown>zz', default_opts)
-
--- map('n', '<S-h>', '10kzz', default_opts)
--- map('n', '<S-l>', '10jzz', default_opts)
--- map('v', '<S-h>', '10kzz', default_opts)
--- map('v', '<S-l>', '10jzz', default_opts)
-
-map('n', '<S-h>', '<PageUp>Mzz', default_opts)
-map('n', '<S-l>', '<PageDown>Mzz', default_opts)
-map('v', '<S-h>', '<PageUp>Mzz', default_opts)
-map('v', '<S-l>', '<PageDown>Mzz', default_opts)
+map('n', '<S-h>', 'zzHzz', default_opts)
+map('n', '<S-l>', 'zzLzz', default_opts)
+map('v', '<S-h>', 'zzHzz', default_opts)
+map('v', '<S-l>', 'zzLzz', default_opts)
 
 -- Переход в самый низ файла с центровкой
 map('n', '<S-g>', 'Gzz', default_opts)
