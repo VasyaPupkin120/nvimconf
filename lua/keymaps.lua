@@ -79,7 +79,7 @@ map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', default_op
 map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', default_opts)
 -- this is good!
 -----------------------------------------------------------
--- Поиск слов через telescope, дерево файлов, список буферов
+-- Поиск слов через telescope, дерево файлов, список буферов, запуск скрипта
 -----------------------------------------------------------
 -- <# Поиск слова под курсором по всему проекту (отсчитывая вниз от рабочей директории)
 map('n', '<#', [[<cmd>lua require('telescope.builtin').grep_string()<cr><Esc>:set relativenumber<CR>]], default_opts)
@@ -98,6 +98,9 @@ map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<CR>, <Esc]],
 -- <n - names Показ дерева классов и функций, плагин majutsushi/tagbar
 map('n', '<n', ':TagbarToggle<CR>', default_opts)
 map('n', '<т', ':TagbarToggle<CR>', default_opts)
+-- <rp - запуск редактируемого скрипта через Python
+map('n', '<rp', ':! python3 %<CR>', default_opts)
+map('n', '<кз', ':! python3 %<CR>', default_opts)
 -----------------------------------------------------------
 -- Фн. клавиши по F1 .. F12
 -----------------------------------------------------------
