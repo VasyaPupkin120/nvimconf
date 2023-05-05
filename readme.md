@@ -1,6 +1,6 @@
 Рекомендации по установке конфига:
 
-0. Конфиг основан на статье с Хабра https://habr.com/ru/post/586808/, рекомендуется прочесть ее и конспект установки конфига в /trash, в конспекте чуть более подробно. 
+0. Конфиг основан на статье с Хабра https://habr.com/ru/post/586808/, рекомендуется прочесть ее и заметки notes.txt в директории trash.
 
 1. если нижеописанные пакеты отстутствуют, их нужно доустановить в систему:
 
@@ -14,16 +14,11 @@
 
 3. Скопировать данный конфиг в ~/.config/nvim:
 
-        git clone --depth 1 https://github.com/VasyaPupkin120/nvim_lua_config ~/.config/nvim
+        git clone --depth 1 https://github.com/VasyaPupkin120/nvimconf ~/.config/nvim
 
     Или:
 
-        git clone --depth 1 git@github.com:VasyaPupkin120/nvim_lua_config.git ~/.config/nvim
-
-    Как вариант, можно клонировать в любое место, а в ~/.config/nvim разместить симлинки на содержимое данного конфига:
-
-        ln -s  ~/some_dir/nvim_lua_config/* ~/.config/nvim
-
+        git clone --depth 1 git@github.com:VasyaPupkin120/nvimconf.git ~/.config/nvim
 
 4. Открыть в neovim два файла keymaps.lua, settings.lua, применить настройки каждого через :so%. В процессе будут ошибки отсутствия плагинов - не страшно, они уйдут после установки плагинов. Применение данных файлов настроек даст некоторые удобства для дальнейшей работы.
 
