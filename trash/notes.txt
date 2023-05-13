@@ -11,6 +11,13 @@
 	https://github.com/neovim/neovim/wiki/Installing-Neovim
 	https://github.com/neovim/neovim/releases/
 
+Кратко об установке:
+	cd ~/.local/bin/nvim/     -    переходим в директорию для установки nvim
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage   -    загружаем приложение nvim
+	chmod u+x nvim.appimage     -     выдаем разрешение не исполнение
+	alias nvim='~/.local/bin/nvim/nvim.appimage'    -     добавляем алиас на запуск редактора в .bashrc
+
+
 Ставим текущий конфиг:
 	git clone --depth 1 https://github.com/VasyaPupkin120/nvimconf ~/.config/nvim
 	git clone --depth 1 git@github.com:VasyaPupkin120/nvimconf.git ~/.config/nvim
@@ -46,10 +53,15 @@
 Ставим все плагины из plugins.lua. Плагины постоянно обновляются и постоянно требуют новую верситю nvim, поэтому в случае проблем в первую очередь стоит обновить редактор.
 	:PackerInstall
 Часть плагинов закомментирована, можно раскомментировать при необходимости и снова выполнить :PackerInstall
+Плагины устанавливаются в директорию
+    ~/.local/share/nvim/site/pack/packer/start
 
 
 Ставим LSP-сервера для нужных языков. Их может быть несколько для одного языка. Для установки используется плагин nvim-lsp-installer. Команду :LspInstall выполнить в файле с расширением для нужного языка программирования.
 	:LspInstall
+Также установить lsp можно по имени:
+	:LspInstall sumneko_lua
+	:LspInstall pyright
 Также, список всех команд для управления LSP можно увидеть через автодополнение :Lsp...
 Стоит в первую очередь поставить sumneko-lua - LSP для Lua.
 
@@ -58,6 +70,9 @@
 
 
 LSP-сервера - это не плагины к nvim, для управления ими (установки, обновления, удаления, логов) используется набор команд :Lsp..., полученный после установки nvim-lsp-installer.
+
+
+Плагин для настройки lsp - neovim/nvim-lspconfig.
 
 
 Для работы автодополнения подключены четыре плагина 
@@ -158,3 +173,18 @@ LSP-сервера - это не плагины к nvim, для управлен
 
 	-- Собственно, плагины
     ...
+
+
+
+В начале 2023 года что то произошло с lsp-сервером для Lua - sumneko_lua, выглядит так, будто разработчик изменл свое имя на Github, сервер же сменил название на lua_ls. Чтобы заработало, нужно сменить названия.
+Переимновать директорию:
+    ~/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer/lua/nvim-lsp-installer/servers/sumneko_lua
+    ~/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer/lua/nvim-lsp-installer/servers/lua_ls
+В файле ~/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer/lua/nvim-lsp-installer/servers/init.lua отредактировать строчку - закомментить старое имя и ввести новое:
+    -- "sumneko_lua",
+    "lua_ls",
+После чего установить этот lsp напрямую указав его имя:
+    :LspInstall lua_ls
+Рано или поздно кто нибудь поправит плагин и этого не придется делать вручную...
+
+
