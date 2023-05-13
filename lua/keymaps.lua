@@ -35,7 +35,7 @@ map('n', '<C-k>', '<C-w>k',  default_opts)
 -- Автоформат + сохранение по CTRL-s , как в нормальном, так и в insert режиме
 map('n', '<C-s>', ':Autoformat<CR>:w<CR>',  default_opts)
 map('i', '<C-s>', '<Esc>:Autoformat<CR>:w<CR>', default_opts)
--- Переключение вкладок с помощью TAB или shift-tab (akinsho/bufferline.nvim) + центровка 
+-- Переключение вкладок с помощью TAB или shift-tab (akinsho/bufferline.nvim) + центровка
 -- Закрытие вкладки по gw
 -- map('n', '<Tab>', ':BufferLineCycleNext<CR>', default_opts)
 -- map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', default_opts)
