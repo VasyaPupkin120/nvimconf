@@ -109,7 +109,7 @@ LSP-сервера - это не плагины к nvim, для управлен
     cmd [[lua require('lualine').setup()]]
 Стандартный вид строки состояния вполне функциональный, но можно поискать другие варианты внешнего вида.
 
-Шрифт есть в директории trash/ или по ссылке https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/LiberationMono/complete/Literation%20Mono%20Nerd%20Font%20Complete%20Mono.ttf
+Шрифт есть в директории trash/ или по ссылке https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/LiberationMono/complete/Literation%20Mono%20Nerd%20Font%20Complete%20Mono.ttf. Иногда по какой то причине ломаются отображения символов - скорее всего разработчики строчки-статуса ставят другой значок, отстуствующий в имеющемся шрифте - можно найти другой шрифт, в котором будут такие символы. Например шрифт Cousine - https://www.programmingfonts.org/#cousine. Загрузить его и подобные можно на сайте https://www.nerdfonts.com/font-downloads.
 
 
 включение поддержки мыши в данном конфиге:
