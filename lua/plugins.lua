@@ -126,5 +126,7 @@ return require('packer').startup(function()
      use 'cohama/lexima.vim'
 ---  -- Линтер, работает для всех языков
      use 'dense-analysis/ale'
+--- -- Плагин подсветки кода для dreammaker
+     use 'ccraciun/vim-dreammaker'
 
 end)

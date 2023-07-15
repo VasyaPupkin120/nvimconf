@@ -183,18 +183,20 @@ cmd [[lua require("bufferline").setup()]]
 cmd [[lua require("nvim-tree").setup()]]
 
 
--- Это lsp для DreamMaker - узкоприменимого ЯП, в основном для игры SpaceStation13
--- настройки для dm-langserver
+-- Это настройки для DreamMaker - узкоприменимого ЯП, в основном для игры SpaceStation13
+-- настройки для lsp-сервера этого языка dm-langserver
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
--- автоопределение типа .dm
-vim.cmd [[ autocmd BufNewFile,BufRead *.dm,*.dme set filetype=dm ]]
 -- запуск dm-langserver
 require('lspconfig')['dm_langserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+-- автоопределение типа .dm
+vim.cmd [[ autocmd BufNewFile,BufRead *.dm,*.dme set filetype=dm ]]
 -- отключение замены табов на пробелы для dm-файлов
-cmd [[autocmd FileType dm setlocal noexpandtab]]
+vim.cmd [[autocmd FileType dm setlocal noexpandtab]]
+-- включение подсветки dreammaker для файлов *.dm, *.dme. Нужен установленный плагин vim-dreammaker
+vim.cmd [[ autocmd BufNewFile,BufRead *.dm,*.dme source ~/.local/share/nvim/site/pack/packer/start/vim-dreammaker/syntax/dreammaker.vim ]]
