@@ -58,9 +58,10 @@ map('n', '<S-g>', 'Gzz', default_opts)
 map('v', 't', '<Plug>(VTranslate)', {})
 -- По <<Space> очищаем последний поиск с подсветкой
 map('n', '<<Space>', ':nohl<CR>', default_opts)
--- Набор сочетаний клавиш для go_to_definiton, скопированы из файла Голобурдина
-map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts)
-map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
+-- Набор сочетаний клавиш для go_to_definiton, основаны на файле Голобурдина
+-- команда mA в добавляет глобальный маркер А для быстрого возврата
+map('n', 'gD', 'mA<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts)
+map('n', 'gd', 'mA<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', default_opts)
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', default_opts)
 -- map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', default_opts)
