@@ -42,6 +42,7 @@ map('i', '<C-s>', '<Esc>:Autoformat<CR>:w<CR>', default_opts)
 map('n', '<Tab>', ':bn<CR>zz', default_opts)
 map('n', '<S-Tab>', ':bp<CR>zz', default_opts)
 map('n', 'gw', ':bd<CR>', default_opts)
+map('n', 'gW', ':bd!<CR>', default_opts)
 -- Навигация крупными блоками
 -- map('n', '<Space>', '<PageDown>zz', default_opts)
 -- map('n', '<C-Space>', '<PageUp>zz', default_opts)
@@ -52,8 +53,9 @@ map('n', '<S-l>', 'zzLzz', default_opts)
 map('v', '<S-h>', 'zzHzz', default_opts)
 map('v', '<S-l>', 'zzLzz', default_opts)
 
--- Переход в самый низ файла с центровкой
-map('n', '<S-g>', 'Gzz', default_opts)
+-- Запоминание точки перехода в метку j и переход в самый низ файла с центровкой 
+map('n', '<S-g>', 'mjGzz', default_opts)
+map('n', '<gg>', 'mjgzz', default_opts)
 -- " Переводчик рус -> eng
 map('v', 't', '<Plug>(VTranslate)', {})
 -- По <<Space> очищаем последний поиск с подсветкой
