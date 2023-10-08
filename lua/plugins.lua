@@ -124,8 +124,8 @@ return require('packer').startup(function()
 ---  use 'mattn/emmet-vim'
 ---  -- Закрывает автоматом скобки
      use 'cohama/lexima.vim'
----  -- Линтер, работает для всех языков
-     use 'dense-analysis/ale'
+---  -- Линтер, работает для всех языков почему то не ставится - из-за него лагало при переключении буферов
+     -- use 'dense-analysis/ale'
 --- -- Плагин подсветки кода для dreammaker
      use 'ccraciun/vim-dreammaker'
 
