@@ -109,8 +109,6 @@ map('n', '<кз', ':! python3 %<CR>', default_opts)
 -----------------------------------------------------------
 -- <<F1> удалить пустые строки
 -- map('n', '<<F1>', ':g/^$/d<CR>', default_opts)
--- <F2> для временной вставки из буфера, чтобы отключить авто идент
-vim.o.pastetoggle='<F2>'
 -- <F3> перечитать конфигурацию nvim Может не работать, если echo $TERM  xterm-256color
 map('n', '<F3>', ':so ~/.config/nvim/init.lua<CR>:so ~/.config/nvim/lua/plugins.lua<CR>:so ~/.config/nvim/lua/settings.lua<CR>:so ~/.config/nvim/lua/keymaps.lua<CR>', { noremap = true })
 -- <<F3> Открыть всю nvim конфигурацию для редактирования

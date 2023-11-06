@@ -62,7 +62,10 @@ return require('packer').startup(function()
 ---
 ---
 ---  -- Highlight, edit, and navigate code using a fast incremental parsing library
-     use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 ---  -- Collection of configurations for built-in LSP client
      use 'neovim/nvim-lspconfig'
      use 'williamboman/nvim-lsp-installer'
