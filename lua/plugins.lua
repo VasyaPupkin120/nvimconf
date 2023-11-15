@@ -129,7 +129,12 @@ return require('packer').startup(function()
      use 'cohama/lexima.vim'
 ---  -- Линтер, работает для всех языков почему то не ставится - из-за него лагало при переключении буферов
      -- use 'dense-analysis/ale'
+
 --- -- Плагин подсветки кода для dreammaker
      use 'ccraciun/vim-dreammaker'
+--- -- Удаление сразу двух кавычек, скобок 
+    use 'tpope/vim-surround'
+--- -- Автоввод html-кода
+    use 'mattn/emmet-vim'
 
 end)
