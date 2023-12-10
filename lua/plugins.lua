@@ -153,4 +153,7 @@ packer.startup(function(use)
     -- Удаление сразу двух кавычек, скобок 
     use 'tpope/vim-surround'
 
+    -- собирает все ворнинги и ерроры в одно окно
+    use 'folke/trouble.nvim'
+
 end)
