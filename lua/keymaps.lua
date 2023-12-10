@@ -75,7 +75,7 @@ map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', default_opts)
 map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', default_opts)
 map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', default_opts)
 map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', default_opts)
-map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', default_opts)
+map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', default_opts)
 map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', default_opts)
 map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', default_opts)
 map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', default_opts)
@@ -85,8 +85,8 @@ map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', default_opts)
 -- Поиск слов через telescope, дерево файлов, список буферов, запуск скрипта
 -----------------------------------------------------------
 -- <# Поиск слова под курсором по всему проекту (отсчитывая вниз от рабочей директории)
-map('n', '<#', [[<cmd>lua require('telescope.builtin').grep_string()<cr><Esc>:set relativenumber<CR>]], default_opts)
-map('n', '<№', [[<cmd>lua require('telescope.builtin').grep_string()<cr><Esc>:set relativenumber<CR>]], default_opts)
+map('n', '<#', [[<cmd>lua require('telescope.builtin').grep_string()<cr><ESC>:set relativenumber<CR>]], default_opts)
+map('n', '<№', [[<cmd>lua require('telescope.builtin').grep_string()<cr><ESC>:set relativenumber<CR>]], default_opts)
 -- </ Поиск слова по всему проекту в модальном окошке
 map('n', '<s', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
 map('n', '<ы', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], default_opts)
@@ -96,8 +96,8 @@ map('n', '<а', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>:set number<CR>:set rela
 -- список буферов и список файлов проекта,
 -- после открытия popup-окна в нем теперь командный режим
 -- за счет списка команд - комнды плагина и команды <Esc>
-map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<CR>, <Esc>]], default_opts)
-map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<CR>, <Esc]], default_opts)
+map('n', '<C-a>', [[<cmd>lua require('telescope.builtin').find_files()<CR><ESC>]], default_opts)
+map('n', '<C-p>', [[<cmd>lua require('telescope.builtin').buffers()<CR><ESC>]], default_opts)
 -- <n - names Показ дерева классов и функций, плагин majutsushi/tagbar
 map('n', '<n', ':TagbarToggle<CR>', default_opts)
 map('n', '<т', ':TagbarToggle<CR>', default_opts)

@@ -67,8 +67,11 @@ return require('packer').startup(function()
         run = ':TSUpdate'
     }
 ---  -- Collection of configurations for built-in LSP client
-     use 'neovim/nvim-lspconfig'
-     use 'williamboman/nvim-lsp-installer'
+     use {
+         "williamboman/mason.nvim",
+         "williamboman/mason-lspconfig.nvim",
+         "neovim/nvim-lspconfig",
+     }
 ---  -- Автодополнялка
      use 'hrsh7th/nvim-cmp'
      use 'hrsh7th/cmp-nvim-lsp'

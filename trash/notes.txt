@@ -212,3 +212,46 @@ LSP-сервера - это не плагины к nvim, для управлен
 
 
 Для того чтобы выполнять поиск через <s по всем нижележащим директориям, нужно сменить через Space-w-a, текущую рабочую директорию на более высокую, с которой и будет выполняться поиск ниже.
+
+
+
+
+похоже, что плагин nvim-lsp-installer, предназначенный для установки lsp-серверов более не поддерживается, его автор сделал новый плагин - mason.nvim. Это значит вероятно что нужно удалить плагин nvim-lsp-installer (он кстати работает с ошибками)  и перейти на mason.
+Кроме него нужен еще плагин mason-lspconfig - для автоматической установки lsp и настройки mason 
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
+Важно, чтобы это было именно в этом порядке.
+Строка запуска конфига:
+    require("mason").setup()
+    require("mason-lspconfig").setup()
+
+Строки запуска установленных lsp-серверов (пока вручную, пока не разобрался как автоматически запускать):
+
+Набор команд:
+    :Mason - opens a graphical status window
+    :MasonUpdate - updates all managed registries
+    :MasonInstall <package> ... - installs/re-installs the provided packages
+    :MasonUninstall <package> ... - uninstalls the provided packages
+    :MasonUninstallAll - uninstalls all packages
+    :MasonLog - opens the mason.nvim log file in a new tab window
+
+
+Почему то lsp-сервера не запускались автоматически, прописал их запуск вручную, потом разобраться что там сделать можно:
+    --FIXME
+    -- запуски lsp-серверов, вручную, криво, избавиться
+    require("lspconfig").lua_ls.setup {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = {'vim',}
+                }
+            }
+        }
+    }
+    require("lspconfig").pyright.setup {}
+    require("lspconfig").tailwindcss.setup {}
+
+добавил vim как глобальную переменную ,чтоб lua_ls не паниковал и не показывал варнинги
