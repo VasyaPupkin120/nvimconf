@@ -53,6 +53,8 @@ map('n', '<S-l>', 'zzLzz', default_opts)
 map('v', '<S-h>', 'zzHzz', default_opts)
 map('v', '<S-l>', 'zzLzz', default_opts)
 
+-- центровка при переходе на метку 0
+map('n', '<`0>', '`0zz', default_opts)
 -- Запоминание точки перехода в метку j и переход в самый низ файла с центровкой 
 map('n', '<S-g>', 'm0Gzz', default_opts)
 map('n', '<gg>', 'm0gzz', default_opts)
