@@ -172,7 +172,8 @@ require("lspconfig").lua_ls.setup {
     }
 }
 require("lspconfig").pyright.setup {}
-require("lspconfig").tailwindcss.setup {}
+-- require("lspconfig").tailwindcss.setup {}
+require("lspconfig").eslint.setup {}
 
 -- Это настройки для DreamMaker - узкоприменимого ЯП, в основном для игры SpaceStation13
 -- настройки для lsp-сервера этого языка dm-langserver

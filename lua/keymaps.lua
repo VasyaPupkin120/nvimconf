@@ -54,16 +54,16 @@ map('v', '<S-h>', 'zzHzz', default_opts)
 map('v', '<S-l>', 'zzLzz', default_opts)
 
 -- Запоминание точки перехода в метку j и переход в самый низ файла с центровкой 
-map('n', '<S-g>', 'mjGzz', default_opts)
-map('n', '<gg>', 'mjgzz', default_opts)
+map('n', '<S-g>', 'm0Gzz', default_opts)
+map('n', '<gg>', 'm0gzz', default_opts)
 -- " Переводчик рус -> eng
 map('v', 't', '<Plug>(VTranslate)', {})
 -- По <<Space> очищаем последний поиск с подсветкой
 map('n', '<<Space>', ':nohl<CR>', default_opts)
 -- Набор сочетаний клавиш для go_to_definiton, основаны на файле Голобурдина
 -- команда mA в добавляет глобальный маркер А для быстрого возврата
-map('n', 'gD', 'mA<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts)
-map('n', 'gd', 'mA<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
+map('n', 'gD', 'm0<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts)
+map('n', 'gd', 'm0<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', default_opts)
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', default_opts)
 -- map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', default_opts)
